@@ -1,0 +1,30 @@
+@import 'utils';
+
+html,
+body,
+body > div,
+.wrapper {
+  height: $full;
+  width: $full;
+
+  margin: 0;
+  padding: 0;
+
+  min-height: 300px;
+
+  overflow: hidden;
+}
+
+.header {
+  @include flex(10%);
+
+  min-height: 30px;
+  font-size: 7vh;
+}
+
+.content {
+  @include flex(90%, 100%, center, unset);
+  & ul li {
+    list-style-type: none;
+  }
+}

@@ -1,0 +1,65 @@
+@import 'utils';
+
+@mixin buttonBase() {
+  cursor: pointer;
+
+  & svg {
+    width: 80%;
+    height: 80%;
+  }
+
+  z-index: $modal-z-index -2;
+}
+
+.wrapper {
+  @include flex(100%, 10%);
+  @include buttonBase();
+
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.right {
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+
+  margin-top: auto;
+  margin-right: 0.5em;
+}
+
+.submit {
+  & > input {
+    @include flex(6vh, 100%);
+    min-height: 24px;
+    background: $oc-orange-2;
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 0 0 0.7em 0.7em;
+
+    border: none;
+
+    &:hover {
+      background: $oc-orange-3;
+    }
+
+    font-size: 1em;
+  }
+}
+
+.floating {
+  @include flex(5vh, 5vh);
+  @include buttonBase();
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  color: black;
+  background: red;
+}
+
+.circle {
+  border-radius: 50%;
+}

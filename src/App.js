@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import ModalContainer from './containers/ModalContainer';
+import TodoListContainer from './containers/TodoListContainer';
+import BaseContainer from './containers/BaseContainer';
+import classNames from 'classnames/bind';
+import * as styles from './styles/layout.module.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as todoItemsActions from './modules/todoItems';
+
+const cx = classNames.bind(styles);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={cx('wrapper')}>
+      <Header className={cx('header')}>Todo List</Header>
+      <TodoListContainer className={cx('content')} />
+      <ModalContainer />
+      <BaseContainer />
     </div>
   );
 }
 
-export default App;
+export default connect(
+  null,
+  dispatch => ({
+    TodoItemsActions: bindActionCreators(todoItemsActions, dispatch),
+  }),
+)(App);

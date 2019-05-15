@@ -1,0 +1,62 @@
+@import 'utils';
+
+.wrapper {
+  @include flex();
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(134, 142, 150, 0.4);
+
+  z-index: $modal-z-index;
+}
+
+.box {
+  @include flex(auto, 30vw);
+  min-height: 200px;
+  border-radius: 0.7em;
+  background: white;
+  color: $oc-gray-9;
+}
+
+.header {
+  @include flex(6vh);
+  position: relative;
+
+  min-height: 26px;
+
+  flex-direction: row;
+  font-size: 1.5em;
+  border-bottom: 1px solid $oc-gray-5;
+  border-width: thin;
+}
+
+$contents-padding: 1em;
+
+form {
+  width: $full;
+  height: $full;
+}
+
+.contents {
+  @include flex(auto);
+  font-size: 1.1em;
+
+  //DayPickerInput div setting
+  & > div {
+    @include flex(auto, 100%);
+  }
+
+  & input {
+    width: 80%;
+    height: 2em;
+
+    margin: 0.2em auto;
+  }
+  padding-top: $contents-padding;
+  padding-bottom: $contents-padding;
+}
+
+.notice {
+  font-size: 0.5em;
+  color: red;
+}
