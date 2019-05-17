@@ -3,10 +3,10 @@ import shortid from 'shortid';
 
 const defaultTodoItem = {
   id: '',
-  endDate: null,
+  endDate: '',
   title: '',
   contents: '',
-  priority: 1,
+  priority: 0,
   isComplete: false,
 };
 
