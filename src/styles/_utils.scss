@@ -20,3 +20,16 @@ $modal-z-index: 11;
 
   flex-direction: $flex-direction;
 }
+
+@mixin buttonBase($color: $oc-orange-2, $hover-color: $oc-orange-3) {
+  cursor: pointer;
+  color: $color;
+  & svg {
+    width: 80%;
+    height: 80%;
+
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}

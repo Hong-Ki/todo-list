@@ -1,8 +1,70 @@
 @import 'utils';
 
 .item {
-  width: 60vw;
   height: 11vh;
+  width: 90%;
 
-  background: $oc-orange-4;
+  min-height: 75px;
+
+  background: white;
+
+  cursor: move;
+
+  border-top: 1px solid $oc-orange-2;
+  border-bottom: 1px solid $oc-orange-2;
+  transition-duration: 0.3s;
+  text-align: center;
+}
+
+.header {
+  @include flex(40%, $full, center, center, row);
+  & > div {
+    @include flex(auto, auto);
+    align-self: stretch;
+  }
+
+  border-width: thin;
+
+  border-bottom: 1px solid $oc-gray-2;
+  .title {
+    flex-grow: 4;
+  }
+
+  .endDate {
+    flex-grow: 1;
+    border-left: 1px solid $oc-gray-2;
+  }
+
+  font-size: 1.3em;
+}
+
+.contents {
+  @include flex(60%, $full);
+}
+
+ul {
+  @include flex(auto, 100%);
+  margin: 16px auto;
+  padding: 0;
+
+  & li {
+    @include flex(auto, 60vw);
+    margin: 1px auto;
+
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      .item {
+        box-shadow: 0px 0px 10px 0px $oc-orange-2;
+        border-left: 5px solid $oc-orange-4;
+        transform: translateX(-5px);
+      }
+
+      & div:nth-last-child(1) {
+        right: 0%;
+        opacity: 1;
+      }
+    }
+  }
 }

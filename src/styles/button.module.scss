@@ -1,16 +1,5 @@
 @import 'utils';
 
-@mixin buttonBase() {
-  cursor: pointer;
-
-  & svg {
-    width: 80%;
-    height: 80%;
-  }
-
-  z-index: $modal-z-index -2;
-}
-
 .wrapper {
   @include flex(100%, 10%);
   @include buttonBase();
@@ -27,6 +16,16 @@
 
   margin-top: auto;
   margin-right: 0.5em;
+}
+
+.close {
+  color: $oc-gray-3;
+
+  & svg {
+    &:hover {
+      color: $oc-gray-5;
+    }
+  }
 }
 
 .submit {
@@ -51,15 +50,33 @@
 }
 
 .floating {
-  @include flex(5vh, 5vh);
-  @include buttonBase();
+  @include flex(40px, 40px);
+  @include buttonBase(white, white);
   position: absolute;
   bottom: 3%;
   right: 3%;
-  color: black;
-  background: red;
+  background: $oc-orange-2;
+
+  z-index: $modal-z-index -2;
 }
 
 .circle {
   border-radius: 50%;
+}
+
+.hide-right {
+  @include buttonBase();
+  @include flex($full, 5%);
+  position: absolute;
+
+  top: 0;
+  right: -50%;
+
+  opacity: 0;
+  transition-duration: 0.3s;
+
+  & svg {
+    width: 75%;
+    height: 75%;
+  }
 }

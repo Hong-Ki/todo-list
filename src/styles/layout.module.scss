@@ -27,4 +27,21 @@ body > div,
   & ul li {
     list-style-type: none;
   }
+
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: $full;
+}
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  width: 50px;
+  background: #ffa94da1;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
 }
