@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './components/Header';
 import ModalContainer from './containers/ModalContainer';
 import TodoListContainer from './containers/TodoListContainer';
@@ -10,14 +10,23 @@ import * as todoItemsActions from './modules/todoItems';
 
 const cx = classNames.bind(styles);
 
-function App() {
-  return (
-    <div className={cx('wrapper')}>
-      <Header className={cx('header')}>Todo List</Header>
-      <TodoListContainer className={cx('content')} />
-      <ModalContainer />
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    const todoItems = localStorage.getItem('todoItems');
+    if (todoItems !== null && typeof todoItems !== 'undefined') {
+      const { TodoItemsActions } = this.props;
+      TodoItemsActions.loadData(JSON.parse(todoItems));
+    }
+  }
+  render() {
+    return (
+      <div className={cx('wrapper')}>
+        <Header className={cx('header')}>Todo List</Header>
+        <TodoListContainer className={cx('content')} />
+        <ModalContainer />
+      </div>
+    );
+  }
 }
 
 export default connect(

@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, fromJS } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 
 const CREATE = 'todoItem/CREATE';
@@ -6,6 +6,7 @@ const UPDATE = 'todoItem/UPDATE';
 const REMOVE = 'todoItem/REMOVE';
 const TOGGLE = 'todoItem/TOGGLE';
 const RELOAD = 'todoItem/RELOAD';
+const LOAD_DATA = 'todoItem/LOAD_DATA';
 
 /**
  * TodoItem Class
@@ -24,6 +25,7 @@ export const update = createAction(UPDATE); // {id:string, todoItem:TodoItem:Imm
 export const remove = createAction(REMOVE); // id:string
 export const toggle = createAction(TOGGLE); // id:string
 export const reload = createAction(RELOAD); // List[TodoItem:Immutable]
+export const loadData = createAction(LOAD_DATA); // [TodoItem]
 
 const initialSate = List([]);
 
@@ -58,6 +60,9 @@ export default handleActions(
     },
     [RELOAD]: (state, action) => {
       return action.payload;
+    },
+    [LOAD_DATA]: (state, action) => {
+      return fromJS(action.payload);
     },
   },
   initialSate,

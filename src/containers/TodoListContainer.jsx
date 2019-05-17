@@ -10,6 +10,12 @@ import { MdAdd } from 'react-icons/md';
 import TodoItem from '../classes/TodoItem';
 
 class TodoListContainer extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.todoItems.toString() !== this.props.todoItems.toString()) {
+      localStorage.setItem('todoItems', JSON.stringify(this.props.todoItems));
+    }
+  }
+
   onChange = todoItem => {
     const { TodoItemModalActions } = this.props;
     TodoItemModalActions.setMode({
