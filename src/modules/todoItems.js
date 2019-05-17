@@ -1,11 +1,11 @@
-import { List, Map, fromJS } from 'immutable';
+import { List } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
-import TodoItem from '../classes/TodoItem';
 
 const CREATE = 'todoItem/CREATE';
 const UPDATE = 'todoItem/UPDATE';
 const REMOVE = 'todoItem/REMOVE';
 const TOGGLE = 'todoItem/TOGGLE';
+const RELOAD = 'todoItem/RELOAD';
 
 /**
  * TodoItem Class
@@ -19,10 +19,11 @@ const TOGGLE = 'todoItem/TOGGLE';
  *  }
  **/
 
-export const create = createAction(CREATE); // Map(todoItem:TodoItem)
-export const update = createAction(UPDATE); // {id:string, todoItem:TodoItem}
+export const create = createAction(CREATE); // Map(todoItem:TodoItem:Immutable)
+export const update = createAction(UPDATE); // {id:string, todoItem:TodoItem:Immutable}
 export const remove = createAction(REMOVE); // id:string
 export const toggle = createAction(TOGGLE); // id:string
+export const reload = createAction(RELOAD); // List[TodoItem:Immutable]
 
 const initalState = List([]);
 
@@ -35,13 +36,16 @@ export default handleActions(
     },
     [UPDATE]: (state, action) => {
       const findIndex = state.findIndex(
-        todoItem => todoItem.get('id') === action.payload.todoItem.id,
+        todoItem => todoItem.get('id') === action.payload.todoItem.get('id'),
       );
 
-      return state.set(findIndex, action.payload.todoItem.toImmutable);
+      return state.mergeIn([findIndex], action.payload.todoItem);
     },
     [REMOVE]: (state, action) => {
-      return state.delete(action.payload);
+      const findIndex = state.findIndex(
+        todoItem => todoItem.get('id') === action.payload,
+      );
+      return state.delete(findIndex);
     },
     [TOGGLE]: (state, action) => {
       const findIndex = state.findIndex(
@@ -51,6 +55,9 @@ export default handleActions(
         [findIndex, 'isComplete'],
         !state.getIn([findIndex, 'isComplete']),
       );
+    },
+    [RELOAD]: (state, action) => {
+      return action.payload;
     },
   },
   initalState,
