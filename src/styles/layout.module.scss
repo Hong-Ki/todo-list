@@ -13,6 +13,10 @@ body > #root,
   min-height: 300px;
 
   overflow-y: auto;
+  font-family: chosunilbomyungjo;
+  & input {
+    font-family: chosunilbomyungjo;
+  }
 }
 
 .header {
@@ -20,6 +24,7 @@ body > #root,
 
   min-height: 30px;
   font-size: 7vh;
+  font-family: iropkeBatang;
 }
 
 .content {
