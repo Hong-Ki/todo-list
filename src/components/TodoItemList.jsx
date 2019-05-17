@@ -6,14 +6,16 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 class TodoItemList extends Component {
   componentDidMount() {
     const { todoItems, toastManager } = this.props;
-    toastManager.add(
-      '우선순위가 높은 순으로 정렬되어 있어요! 드래그 해서 변경해보세요!',
-      {
-        appearance: 'info',
-        autoDismiss: true,
-        pauseOnHover: false,
-      },
-    );
+    if (todoItems.size > 1) {
+      toastManager.add(
+        '우선순위가 높은 순으로 정렬되어 있어요! 드래그 해서 변경해보세요!',
+        {
+          appearance: 'info',
+          autoDismiss: true,
+          pauseOnHover: false,
+        },
+      );
+    }
 
     const filterdItems = todoItems
       .filter(item => !item.get('isComplete') && item.get('endDate') !== '')
