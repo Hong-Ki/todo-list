@@ -72,6 +72,9 @@ class TodoItemModal extends Component {
                     before: new Date(),
                   },
                 }}
+                inputProps={{
+                  readonly: 'readonly',
+                }}
                 onDayChange={onChange.endDate}
               />
               <div className={cx('notice')}>
