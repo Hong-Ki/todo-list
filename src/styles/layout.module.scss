@@ -2,7 +2,7 @@
 
 html,
 body,
-body > div,
+body > #root,
 .wrapper {
   height: $full;
   width: $full;
@@ -12,7 +12,7 @@ body > div,
 
   min-height: 300px;
 
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .header {
@@ -27,9 +27,8 @@ body > div,
   & ul li {
     list-style-type: none;
   }
-
-  overflow-y: auto;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
   height: $full;

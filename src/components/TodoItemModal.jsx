@@ -10,56 +10,63 @@ const cx = classNames.bind(styles);
 
 class TodoItemModal extends Component {
   onSubmit = e => {
-    const { onClick } = this.props;
+    const { onSubmit } = this.props;
     e.preventDefault();
-    onClick();
+    onSubmit();
   };
 
   onChange = {
-    title: e => {
+    default: e => {
       const { onChange } = this.props;
-      const { value } = e.target;
-
-      onChange.title(value);
-    },
-    contents: e => {
-      const { onChange } = this.props;
-      const { value } = e.target;
-
-      onChange.contents(value);
+      const { value, name } = e.target;
+      onChange(name, value);
     },
     endDate: (selectedDay, modifiers, dayPickerInput) => {
       const { onChange } = this.props;
-      const { value } = dayPickerInput.input;
+      const date = selectedDay.toISOString().slice(0, 10);
+      const input = dayPickerInput.getInput();
 
-      if (value !== '') {
-      }
+      input.value = date;
 
-      onChange.endDate(selectedDay);
+      onChange('endDate', date);
     },
   };
 
   render() {
     const { onSubmit, onChange } = this;
+    const { onHide, modal, mode } = this.props;
+
     return (
       <div className={cx('wrapper')}>
         <div className={cx('box')}>
           <form onSubmit={onSubmit}>
             <div className={cx('header')}>
-              TITLE
-              <Button direction="right">
+              {mode === 'create' ? '등록' : '수정'}
+              <Button
+                className={['wrapper', 'right', 'close']}
+                onClick={onHide}
+              >
                 <MdClose />
               </Button>
             </div>
             <div className={cx('contents')}>
-              <input placeholder="제목*" onChange={onChange.title} required />
               <input
+                placeholder="제목*"
+                name="title"
+                defaultValue={modal.get('title')}
+                onChange={onChange.default}
+                required
+              />
+              <input
+                name="contents"
                 placeholder="내용*"
-                onChange={onChange.contents}
+                defaultValue={modal.get('contents')}
+                onChange={onChange.default}
                 required
               />
               <DayPickerInput
-                placeholder={'종료 날짜(YYYY-M-D)'}
+                placeholder={'종료 날짜(YYYY-MM-DD)'}
+                value={modal.get('endDate')}
                 dayPickerProps={{
                   disabledDays: {
                     before: new Date(),
@@ -68,11 +75,13 @@ class TodoItemModal extends Component {
                 onDayChange={onChange.endDate}
               />
               <div className={cx('notice')}>
-                <span>*은 필수로 입력해야 합니다.</span>
-                <span>새 항목은 최상위 우선순위로 등록 됩니다.</span>
+                <span>*가 있는 필드는 필수로 입력해야 합니다.</span>
+                {mode === 'create' && (
+                  <span>새 항목은 최상위 우선순위로 등록 됩니다.</span>
+                )}
               </div>
             </div>
-            <Submit>ADD</Submit>
+            <Submit>{mode === 'create' ? '등록' : '수정'}</Submit>
           </form>
         </div>
       </div>

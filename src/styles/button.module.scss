@@ -58,6 +58,13 @@
   background: $oc-orange-2;
 
   z-index: $modal-z-index -2;
+
+  transition-duration: 0.3s;
+
+  &:hover {
+    background: $oc-orange-3;
+    transform: translateY(-3px);
+  }
 }
 
 .circle {

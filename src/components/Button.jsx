@@ -6,12 +6,7 @@ const cx = classNames.bind(styles);
 
 const Button = ({ children, ...rest }) => {
   return (
-    <div
-      className={cx([
-        rest.className || 'wrapper',
-        rest.direction !== '' ? rest.direction : '',
-      ])}
-    >
+    <div className={cx(rest.className)} onClick={rest.onClick}>
       {children}
     </div>
   );
@@ -31,6 +26,10 @@ export const FloatingButton = ({ children, ...rest }) => {
       {children}
     </div>
   );
+};
+
+export const HideButton = ({ children, ...rest }) => {
+  return <div className={cx(rest.className)}>{children}</div>;
 };
 
 export default Button;

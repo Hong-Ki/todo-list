@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './components/Header';
 import ModalContainer from './containers/ModalContainer';
 import TodoListContainer from './containers/TodoListContainer';
-import BaseContainer from './containers/BaseContainer';
 import classNames from 'classnames/bind';
 import * as styles from './styles/layout.module.scss';
 import { connect } from 'react-redux';
@@ -17,7 +16,6 @@ function App() {
       <Header className={cx('header')}>Todo List</Header>
       <TodoListContainer className={cx('content')} />
       <ModalContainer />
-      <BaseContainer />
     </div>
   );
 }

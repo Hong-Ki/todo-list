@@ -6,34 +6,50 @@ import * as todoItemModalActions from '../modules/modal';
 import TodoItemModal from '../components/TodoItemModal';
 
 class ModalContainer extends Component {
-  handleCreate = () => {
-    const { TodoItemsActions, TodoItemModalActions, modal } = this.props;
-    TodoItemsActions.create(modal);
+  handleSubmit = {
+    create: () => {
+      const { TodoItemsActions, modal } = this.props;
+
+      TodoItemsActions.create(modal);
+      this.handleHide();
+    },
+    change: () => {
+      const { TodoItemsActions, modal } = this.props;
+
+      TodoItemsActions.update({
+        id: modal.get('id'),
+        todoItem: modal,
+      });
+      this.handleHide();
+    },
+  };
+
+  handleHide = () => {
+    const { TodoItemModalActions } = this.props;
     TodoItemModalActions.setMode('');
   };
 
-  handleChange = {
-    title: title => {
-      const { TodoItemModalActions } = this.props;
-      TodoItemModalActions.setTitle(title);
-    },
-    contents: contents => {
-      const { TodoItemModalActions } = this.props;
-      TodoItemModalActions.setContents(contents);
-    },
-    endDate: date => {
-      const { TodoItemModalActions } = this.props;
-      TodoItemModalActions.setEndDate(date);
-    },
+  handleChange = (key, value) => {
+    const { TodoItemModalActions } = this.props;
+    TodoItemModalActions.setModal({
+      key: key,
+      value: value,
+    });
   };
 
   render() {
-    const { handleChange, handleCreate } = this;
-    const { mode } = this.props;
+    const { handleChange, handleSubmit, handleHide } = this;
+    const { mode, modal } = this.props;
     return (
       <div>
-        {mode === 'create' && (
-          <TodoItemModal onChange={handleChange} onClick={handleCreate} />
+        {(mode === 'create' || mode === 'change') && (
+          <TodoItemModal
+            onChange={handleChange}
+            onSubmit={handleSubmit[mode]}
+            onHide={handleHide}
+            modal={modal}
+            mode={mode}
+          />
         )}
       </div>
     );
@@ -43,7 +59,6 @@ class ModalContainer extends Component {
 export default connect(
   state => ({
     modal: state.modal.get('modal'),
-    todoItems: state.todoItems,
     mode: state.modal.get('mode'),
   }),
   dispatch => ({

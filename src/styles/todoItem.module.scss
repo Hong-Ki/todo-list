@@ -68,3 +68,40 @@ ul {
     }
   }
 }
+
+.complete {
+  color: $oc-gray-4;
+  text-decoration: line-through;
+}
+
+.check {
+  position: absolute;
+
+  left: 0%;
+
+  width: 3%;
+
+  & > input {
+    display: none;
+  }
+
+  & > label {
+    @include buttonBase();
+    width: 100%;
+
+    display: flex;
+  }
+  & > input[type='checkbox'] + label > svg:nth-child(1) {
+    display: flex;
+  }
+  & > input[type='checkbox'] + label > svg:nth-child(2) {
+    display: none;
+  }
+
+  & > input[type='checkbox']:checked + label > svg:nth-child(1) {
+    display: none;
+  }
+  & > input[type='checkbox']:checked + label > svg:nth-child(2) {
+    display: flex;
+  }
+}
