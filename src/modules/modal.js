@@ -7,7 +7,7 @@ const SET_MODE = 'modal/SET_MODE';
 export const setModal = createAction(SET_MODAL); // {key:string, value:string}
 export const setMode = createAction(SET_MODE); // {mode:string, modal:TodoItem}
 
-const initalState = Map({
+const initialSate = Map({
   modal: Map({}),
   mode: '',
 });
@@ -27,5 +27,5 @@ export default handleActions(
       return state.set('mode', action.payload.mode);
     },
   },
-  initalState,
+  initialSate,
 );

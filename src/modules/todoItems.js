@@ -25,7 +25,7 @@ export const remove = createAction(REMOVE); // id:string
 export const toggle = createAction(TOGGLE); // id:string
 export const reload = createAction(RELOAD); // List[TodoItem:Immutable]
 
-const initalState = List([]);
+const initialSate = List([]);
 
 export default handleActions(
   {
@@ -60,5 +60,5 @@ export default handleActions(
       return action.payload;
     },
   },
-  initalState,
+  initialSate,
 );
