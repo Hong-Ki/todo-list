@@ -73,7 +73,7 @@ class TodoItemModal extends Component {
                   },
                 }}
                 inputProps={{
-                  readonly: 'readonly',
+                  readOnly: 'readOnly',
                 }}
                 onDayChange={onChange.endDate}
               />
