@@ -13,7 +13,10 @@ body > #root,
   min-height: 300px;
 
   overflow-y: auto;
+
   font-family: chosunilbomyungjo;
+  color: $oc-gray-7;
+  font-display: swap;
   & input {
     font-family: chosunilbomyungjo;
   }
@@ -23,12 +26,15 @@ body > #root,
   @include flex(10%);
 
   min-height: 30px;
-  font-size: 7vh;
-  font-family: iropkeBatang;
+
+  margin: 0.4em auto;
+  font-size: 5vh;
+  font-family: chosunilbomyungjo;
+  text-transform: uppercase;
 }
 
 .content {
-  @include flex(90%, 100%, center, unset);
+  @include flex(auto, 100%, center, unset);
   & ul li {
     list-style-type: none;
   }

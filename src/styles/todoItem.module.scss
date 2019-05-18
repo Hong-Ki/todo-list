@@ -1,7 +1,7 @@
 @import 'utils';
 
 .item {
-  height: 11vh;
+  height: 10vh;
   width: 90%;
 
   min-height: 75px;
@@ -23,16 +23,16 @@
     align-self: stretch;
   }
 
-  border-width: thin;
+  //border-width: thin;
 
-  border-bottom: 1px solid $oc-gray-2;
+  border-bottom: 1px solid $oc-orange-1;
   .title {
     flex-grow: 4;
   }
 
   .endDate {
     flex-grow: 1;
-    border-left: 1px solid $oc-gray-2;
+    border-left: 1px solid $oc-orange-1;
   }
 
   font-size: 1.3em;
@@ -43,12 +43,12 @@
 }
 
 ul {
-  @include flex(auto, 100%);
+  @include flex(auto, 85vw);
   margin: 16px auto;
   padding: 0;
 
   & li {
-    @include flex(auto, 60vw);
+    @include flex(auto, 80vw);
     margin: 1px auto;
 
     position: relative;
@@ -79,7 +79,7 @@ ul {
 
   left: 0%;
 
-  width: 3%;
+  @include flex($full, 4%);
 
   & > input {
     display: none;
@@ -87,9 +87,7 @@ ul {
 
   & > label {
     @include buttonBase();
-    width: 100%;
-
-    display: flex;
+    @include flex($full, $full);
   }
   & > input[type='checkbox'] + label > svg:nth-child(1) {
     display: flex;

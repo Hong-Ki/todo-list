@@ -44,6 +44,9 @@ class TodoListContainer extends Component {
 
   onDragEnd = result => {
     const { todoItems, TodoItemsActions } = this.props;
+    if (todoItems.size <= 1) {
+      return;
+    }
     const findIndex = todoItems.findIndex(
       item => item.get('id') === result.draggableId,
     );
