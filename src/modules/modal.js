@@ -18,7 +18,10 @@ export default handleActions(
       return state.setIn(['modal', action.payload.key], action.payload.value);
     },
     [SET_MODE]: (state, action) => {
-      if (action.payload.mode === 'create' || action.payload.mode) {
+      if (
+        action.payload.mode === 'create' ||
+        action.payload.mode === 'change'
+      ) {
         return state
           .set('mode', action.payload.mode)
           .set('modal', action.payload.modal);
