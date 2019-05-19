@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    * 본 설치과정에는 __NodeJS__가 필요합니다.(npm사용)
+      [NodeJS 다운로드](https://nodejs.org/ko/download/)
+    * Chrome에서 개발, 테스트 되었습니다. 가능하면 Chrome에서 이용해주세요
 
-## Available Scripts
+# 1. github 클론
 
-In the project directory, you can run:
+원하는 디렉토리로 이동한 뒤에
 
-### `npm start`
+    $ git clone https://github.com/Hong-Ki/todo-list.git [project-name]
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+를 입력해 주세요. [project-name] 대신 원하는 프로젝트 명을 넣으시면 됩니다. 입력하지 않으면 기본 폴더 명인 todo-list로 생성됩니다.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+# 2. 프로젝트로 이동 & 의존 라이브러리 설치
 
-### `npm test`
+프로젝트로 이동한 후 의존 라이브러리들을 설치해 주세요.
+npm 이나 yarn중 편한걸 쓰시면 됩니다.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(npm은 npm install 으로, yarn 은 yarn 으로 입력)
 
-### `npm run build`
+    $ cd todo-list
+    $ npm install || yarn
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 3. 프로젝트 빌드 및 서버 실행
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- create-react-app이 설치 yarn start 또는 npm start를 입력하면, 개발용 서버에서 실행되며, 자동으로 브라우저가 실행됩니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm 사용자 라면,
 
-### `npm run eject`
+    npm run deploy-static
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+yarn 사용자 라면,
+  
+ yarn deploy-static
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+을 입력해 주세요.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# 4. 브라우저 접속
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+서버가 정상적으로 올라갔다면 기본 포트는 5000으로 되어있습니다.
+브라우저를 키신 후에(Chrome 권장) http://localhost:5000 으로 접속 하시면 TodoList를 사용하실 수 있습니다.
