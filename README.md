@@ -1,5 +1,6 @@
     * 본 설치과정에는 NodeJS가 필요합니다. (npm 사용)
-    [NodeJS 다운로드](https://nodejs.org/ko/download/)
+    [NodeJS 다운로드]
+    https://nodejs.org/ko/download/ 또는 https://downloads.nodesource.com/
 
     * Chrome에서 개발, 테스트 되었습니다. 가능하면 Chrome에서 이용해주세요
 
