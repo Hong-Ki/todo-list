@@ -1,5 +1,6 @@
     * 본 설치과정에는 __NodeJS__가 필요합니다.(npm사용)
       [NodeJS 다운로드](https://nodejs.org/ko/download/)
+
     * Chrome에서 개발, 테스트 되었습니다. 가능하면 Chrome에서 이용해주세요
 
 # 1. github 클론
@@ -26,11 +27,11 @@ npm 이나 yarn중 편한걸 쓰시면 됩니다.
 
 npm 사용자 라면,
 
-    npm run deploy-static
+    npm run server
 
 yarn 사용자 라면,
-  
- yarn deploy-static
+
+    yarn run server
 
 을 입력해 주세요.
 
