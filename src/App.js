@@ -21,6 +21,8 @@ class App extends Component {
   render() {
     return (
       <div className={cx('wrapper')}>
+        <div className={cx('vl')} />
+        <div className={cx(['vl', 'right'])} />
         <Header className={cx('header')}>Todo List</Header>
         <TodoListContainer className={cx('content')} />
         <ModalContainer />
