@@ -1,4 +1,4 @@
-    * 본 설치과정에는 __NodeJS__가 필요합니다.(npm사용)
+    * 본 설치과정에는 NodeJS가 필요합니다.(npm사용)
       [NodeJS 다운로드](https://nodejs.org/ko/download/)
 
     * Chrome에서 개발, 테스트 되었습니다. 가능하면 Chrome에서 이용해주세요
