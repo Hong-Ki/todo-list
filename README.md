@@ -1,4 +1,4 @@
-    * 본 설치과정에는 NodeJS가 필요합니다. (npm 사용)
+    * 본 설치과정에는 Git과 NodeJS가 필요합니다. (npm 사용)
     [NodeJS 다운로드]
     https://nodejs.org/ko/download/ 또는 https://downloads.nodesource.com/
 
