@@ -9,6 +9,13 @@ import { FiSquare, FiCheckSquare } from 'react-icons/fi';
 const cx = classNames.bind(styles);
 
 class TodoItem extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      JSON.stringify(nextProps.todoItem.toJS()) !==
+      JSON.stringify(this.props.todoItem.toJS())
+    );
+  }
+
   onChange = () => {
     const { todoItem, onChange } = this.props;
     onChange(todoItem);

@@ -30,8 +30,17 @@ class TodoItemList extends Component {
       });
     }
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      JSON.stringify(nextProps.todoItems.toJS()) !==
+      JSON.stringify(this.props.todoItems.toJS())
+    );
+  }
+
   render() {
     const { onChange, onRemove, onToggle, onDragEnd, todoItems } = this.props;
+
     const itemList = todoItems.map(item => (
       <Draggable
         key={item.get('id')}
