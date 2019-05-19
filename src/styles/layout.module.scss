@@ -12,29 +12,32 @@ body > #root,
 
   min-height: 300px;
 
-  overflow-y: auto;
-
   font-family: chosunilbomyungjo;
   color: $oc-gray-7;
-  font-display: swap;
+
   & input {
     font-family: chosunilbomyungjo;
   }
+
+  overflow: hidden;
+}
+
+.wrapper {
+  overflow: auto;
 }
 
 .header {
-  @include flex(10%);
+  @include flex(13vh);
 
-  min-height: 30px;
+  min-height: 60px;
 
-  margin: 0.4em auto;
-  font-size: 5vh;
+  font-size: 2.4em;
   font-family: chosunilbomyungjo;
   text-transform: uppercase;
 }
 
 .content {
-  @include flex(auto, 100%, center, unset);
+  @include flex(85vh, 100%, center, unset);
   & ul li {
     list-style-type: none;
   }
@@ -54,4 +57,26 @@ body > #root,
   background: #ffa94da1;
   -webkit-border-radius: 8px;
   border-radius: 8px;
+}
+
+.vl {
+  width: 3px;
+  height: 100vh;
+
+  position: absolute;
+
+  background: black;
+
+  top: 0%;
+  left: 5%;
+
+  background: $oc-gray-3;
+
+  box-shadow: -6px 0px 20px 3px $oc-gray-3;
+}
+
+.right {
+  right: 8%;
+  left: auto;
+  box-shadow: 6px 0px 20px 3px $oc-gray-3;
 }

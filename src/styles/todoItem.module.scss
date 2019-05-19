@@ -1,7 +1,7 @@
 @import 'utils';
 
 .item {
-  height: 10vh;
+  height: 9vh;
   width: 90%;
 
   min-height: 75px;
@@ -23,7 +23,7 @@
     align-self: stretch;
   }
 
-  //border-width: thin;
+  font-weight: 600;
 
   border-bottom: 1px solid $oc-orange-1;
   .title {
@@ -43,8 +43,8 @@
 }
 
 ul {
-  @include flex(auto, 85vw);
-  margin: 16px auto;
+  @include flex(auto, 85vw, center, flex-start);
+  margin: 1vh auto;
   padding: 0;
 
   & li {
