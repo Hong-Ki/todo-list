@@ -20,7 +20,7 @@ npm 이나 yarn 중 편하신 걸로 쓰시면 됩니다.
 (npm은 npm install 으로, yarn은 yarn 으로 입력)
 
     $ cd todo-list
-    $ npm install || yarn
+    $ npm install || yarn install
 
 # 3. 프로젝트 빌드 및 서버 실행
 
