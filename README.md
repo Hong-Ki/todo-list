@@ -1,4 +1,4 @@
-    * 본 설치과정에는 NodeJS가 필요합니다. (npm 사용)
+    * 본 설치과정에는 Git과 NodeJS가 필요합니다. (npm 사용)
     [NodeJS 다운로드]
     https://nodejs.org/ko/download/ 또는 https://downloads.nodesource.com/
 
@@ -20,7 +20,7 @@ npm 이나 yarn 중 편하신 걸로 쓰시면 됩니다.
 (npm은 npm install 으로, yarn은 yarn 으로 입력)
 
     $ cd todo-list
-    $ npm install || yarn
+    $ npm install || yarn install
 
 # 3. 프로젝트 빌드 및 서버 실행
 
