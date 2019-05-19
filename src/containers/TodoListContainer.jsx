@@ -11,7 +11,10 @@ import TodoItem from '../classes/TodoItem';
 
 class TodoListContainer extends Component {
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.todoItems.toString() !== this.props.todoItems.toString()) {
+    if (
+      JSON.stringify(prevProps.todoItems.toJS()) !==
+      JSON.stringify(this.props.todoItems.toJS())
+    ) {
       localStorage.setItem('todoItems', JSON.stringify(this.props.todoItems));
     }
   }
@@ -44,23 +47,24 @@ class TodoListContainer extends Component {
 
   onDragEnd = result => {
     const { todoItems, TodoItemsActions } = this.props;
-    if (todoItems.size <= 1) {
+    if (todoItems.size <= 1 || result.destination === null) {
       return;
     }
+
+    if (result.source.index === result.destination.index) {
+      return;
+    }
+
     const findIndex = todoItems.findIndex(
       item => item.get('id') === result.draggableId,
     );
     const deletedList = todoItems.delete(findIndex);
     let idx = 0;
+
     TodoItemsActions.reload(
       deletedList
         .insert(result.destination.index, todoItems.get(findIndex))
-        .map(item =>
-          item.set(
-            'priority',
-            item.get('isComplete') ? item.get('priority') : idx++,
-          ),
-        ),
+        .map(item => item.set('priority', idx++)),
     );
   };
 
