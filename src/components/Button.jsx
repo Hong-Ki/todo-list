@@ -15,7 +15,12 @@ const Button = ({ children, ...rest }) => {
 export const Submit = ({ children, ...rest }) => {
   return (
     <div className={cx('submit')}>
-      <input type="submit" value={children} onClick={rest.onClick} />
+      <input
+        type="submit"
+        value={children}
+        onClick={rest.onClick}
+        autoComplete={'off'}
+      />
     </div>
   );
 };

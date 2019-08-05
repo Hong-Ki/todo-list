@@ -55,6 +55,7 @@ class TodoItemModal extends Component {
                 name="title"
                 defaultValue={modal.get('title')}
                 onChange={onChange.default}
+                autoComplete={'off'}
                 required
               />
               <input
@@ -62,6 +63,7 @@ class TodoItemModal extends Component {
                 placeholder="내용*"
                 defaultValue={modal.get('contents')}
                 onChange={onChange.default}
+                autoComplete={'off'}
                 required
               />
               <DayPickerInput
@@ -76,6 +78,7 @@ class TodoItemModal extends Component {
                   readOnly: 'readOnly',
                 }}
                 onDayChange={onChange.endDate}
+                autoComplete={'off'}
               />
               <div className={cx('notice')}>
                 <span>*가 있는 필드는 필수로 입력해야 합니다.</span>

@@ -5,8 +5,10 @@ import { HideButton } from '../components/Button';
 
 import { MdEdit, MdDelete } from 'react-icons/md';
 import { FiSquare, FiCheckSquare } from 'react-icons/fi';
-
+console.log(styles);
 const cx = classNames.bind(styles);
+console.log(cx);
+console.log(cx('header'));
 
 class TodoItem extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -43,6 +45,7 @@ class TodoItem extends Component {
             id={todoItem.get('id')}
             type={'checkbox'}
             onClick={handleCheck}
+            autoComplete={'off'}
           />
           <label htmlFor={todoItem.get('id')}>
             <FiSquare />
