@@ -5,7 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 class TodoItemList extends Component {
   componentDidMount() {
-    const { todoItems, toastManager } = this.props;
+    const { toastManager } = this.props;
     toastManager.add(
       '우선순위가 높은 순으로 정렬됩니다! 드래그해서 우선순위를 변경할 수 있어요!',
       {
@@ -14,21 +14,6 @@ class TodoItemList extends Component {
         pauseOnHover: true,
       },
     );
-
-    const filterdItems = todoItems
-      .filter(item => !item.get('isComplete') && item.get('endDate') !== '')
-      .filter(item => new Date() > new Date(item.get('endDate') + ' 00:00:00'));
-
-    for (let item of filterdItems) {
-      const message = `[${item.get('title')} : 
-        ${item.get('contents')}]의 마감기한이 지났어요! 
-        (~${item.get('endDate')})`;
-      toastManager.add(message, {
-        appearance: 'warning',
-        autoDismiss: false,
-        pauseOnHover: false,
-      });
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -39,7 +24,14 @@ class TodoItemList extends Component {
   }
 
   render() {
-    const { onChange, onRemove, onToggle, onDragEnd, todoItems } = this.props;
+    const {
+      onChange,
+      onRemove,
+      onToggle,
+      onDragEnd,
+      todoItems,
+      toastManager,
+    } = this.props;
 
     const itemList = todoItems.map(item => (
       <Draggable
@@ -58,6 +50,7 @@ class TodoItemList extends Component {
               onChange={onChange}
               onRemove={onRemove}
               onToggle={onToggle}
+              toastManager={toastManager}
             />
           </div>
         )}

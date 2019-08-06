@@ -5,10 +5,7 @@ import { HideButton } from '../components/Button';
 
 import { MdEdit, MdDelete } from 'react-icons/md';
 import { FiSquare, FiCheckSquare } from 'react-icons/fi';
-console.log(styles);
 const cx = classNames.bind(styles);
-console.log(cx);
-console.log(cx('header'));
 
 class TodoItem extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -17,6 +14,47 @@ class TodoItem extends Component {
       JSON.stringify(this.props.todoItem.toJS())
     );
   }
+
+  componentDidMount() {
+    const { todoItem } = this.props;
+    if (
+      todoItem.get('endDate') !== '' &&
+      !todoItem.get('isComplete') &&
+      new Date() > new Date(todoItem.get('endDate') + ' 00:00:00')
+    ) {
+      this.addMessage(todoItem);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { todoItem: prevTodoItem } = prevProps;
+    const { todoItem } = this.props;
+    if (prevTodoItem.get('isComplete') && !todoItem.get('isComplete')) {
+      this.addMessage(todoItem);
+    }
+
+    if (!prevTodoItem.get('isComplete') && todoItem.get('isComplete')) {
+      this.removeMessage(todoItem.get('id'));
+    }
+  }
+
+  removeMessage = id => {
+    const { toastManager } = this.props;
+    toastManager.remove(id);
+  };
+
+  addMessage = item => {
+    const { toastManager } = this.props;
+    const message = `[${item.get('title')} : 
+    ${item.get('contents')}]의 마감기한이 지났어요! 
+    (~${item.get('endDate')})`;
+    toastManager.add(message, {
+      appearance: 'warning',
+      id: item.get('id'),
+      autoDismiss: false,
+      pauseOnHover: false,
+    });
+  };
 
   onChange = () => {
     const { todoItem, onChange } = this.props;
@@ -45,16 +83,14 @@ class TodoItem extends Component {
             id={todoItem.get('id')}
             type={'checkbox'}
             onClick={handleCheck}
-            autoComplete={'off'}
+            defaultChecked={todoItem.get('isComplete')}
           />
           <label htmlFor={todoItem.get('id')}>
             <FiSquare />
             <FiCheckSquare />
           </label>
         </div>
-        <div
-          className={cx(['item', todoItem.get('isComplete') ? 'complete' : ''])}
-        >
+        <div className={cx(['item', { complete: todoItem.get('isComplete') }])}>
           <div className={cx('header')}>
             <div className={cx('title')}>{todoItem.get('title')}</div>
             {todoItem.get('endDate') !== '' && (
